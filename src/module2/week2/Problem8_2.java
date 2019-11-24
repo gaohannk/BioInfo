@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import static common.PrintUtils.*;
 import static common.ReadUtils.readKmerList;
 import static module2.week1.Problem5.DeBruijnGraphFromkmersProblem;
+import static module2.week2.Problem3.PathToGenome;
 import static module2.week2.Problem8.MaximalNonBranchingPaths;
 
 public class Problem8_2 {
@@ -24,13 +25,8 @@ public class Problem8_2 {
 	}
 
     public static List<String> fromPathToContigs(List<List<String>> paths) {
-        return paths.stream().map(path -> {
-            String prefix = path.get(0).substring(0, path.get(0).length() - 1);
-            String follow = path.stream().map(a -> a.substring(a.length() - 1)).reduce((a, b) -> (a + b)).get();
-            return prefix + follow;
-        }).collect(Collectors.toList());
+        return paths.stream().map(path -> PathToGenome(path)).collect(Collectors.toList());
     }
-
 
 	public static void main(String[] args) throws IOException {
 		List<String> kmerlist = readKmerList("./resource/module2/dataset_205_5.txt");

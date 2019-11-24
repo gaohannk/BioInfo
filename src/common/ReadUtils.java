@@ -22,7 +22,9 @@ public class ReadUtils {
 	private static List<String> readKmerListFrom(String[] splits, int start) {
 		List<String> patterns = new LinkedList<>();
 		for (int i = start; i < splits.length; i++) {
-			patterns.add(splits[i]);
+			if(!splits[i].isEmpty()) {
+				patterns.add(splits[i]);
+			}
 		}
 		return patterns;
 	}

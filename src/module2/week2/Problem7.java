@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import static common.PrintUtils.printListInOneline;
 
+import static module2.common.PrintUtils.printPairReads;
 import static module2.week2.Problem2.EulerianPath;
 import static module2.week2.Problem6.StringSpelledByGappedPatterns;
 
@@ -30,7 +31,7 @@ public class Problem7 {
         return StringSpelledByGappedPatterns(pairReads, k, d);
     }
 
-    private static List<Pair<String>> constructPairReads(List<String> path) {
+    public static List<Pair<String>> constructPairReads(List<String> path) {
         List<Pair<String>> pairReads = new LinkedList<>();
         for (int i = 0; i < path.size(); i++) {
             String read1 = path.get(i).split("\\|")[0];
@@ -84,7 +85,4 @@ public class Problem7 {
         System.out.println(StringReconstructionFromReadPairsProblem(k, d, pairReads));
     }
 
-    private static void printPairReads(List<Pair<String>> pairReads) {
-        printListInOneline(pairReads.stream().map( pair -> pair.read1+ "|"+ pair.read2).collect(Collectors.toList()));
-    }
 }

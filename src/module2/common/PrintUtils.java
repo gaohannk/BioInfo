@@ -1,6 +1,11 @@
 package module2.common;
 
+import module2.week2.Pair;
+
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static common.PrintUtils.printListInOneline;
 
 public class PrintUtils {
     public static <T extends Collection<E>, E> String printGraph(Map<String, T> graph) {
@@ -14,5 +19,8 @@ public class PrintUtils {
         }
         sb.append("\n");
         return sb.toString();
+    }
+    public static void printPairReads(List<Pair<String>> pairReads) {
+        printListInOneline(pairReads.stream().map( pair -> pair.read1+ "|"+ pair.read2).collect(Collectors.toList()));
     }
 }
