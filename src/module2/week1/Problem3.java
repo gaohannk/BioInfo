@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import java.util.*;
 
-import static module2.week1.PrintUtils.contructToString;
+import static module2.common.PrintUtils.printGraph;
 import static module2.week1.PrintUtils.readFromFile;
 
 
@@ -13,8 +13,8 @@ public class Problem3 {
         List<String> nodes = readFromFile();
 //      List<String> nodes = readFromStdin();
         Map<String, Set<String>> graph = OverlapGraphProblem(nodes);
-        String res = contructToString(graph);
-        System.out.println(res);
+        String text = printGraph(graph);
+        System.out.println(text);
         //writeToFile(res);
     }
 

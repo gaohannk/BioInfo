@@ -10,32 +10,6 @@ import java.util.*;
 
 public class PrintUtils {
 
-    public static String contructToString(Map<String, Set<String>> graph) {
-        StringBuilder sb = new StringBuilder();
-        for (String key : graph.keySet()) {
-            sb.append(key + " -> ");
-            for (String adjNode : graph.get(key)) {
-                sb.append(adjNode + ",");
-            }
-            sb.replace(sb.length() - 1, sb.length(), "\n");
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
-
-    public static String constructToString(Map<String, List<String>> graph) {
-        StringBuilder sb = new StringBuilder();
-        for (String key : graph.keySet()) {
-            sb.append(key + " -> ");
-            for (String adjNode : graph.get(key)) {
-                sb.append(adjNode + ",");
-            }
-            sb.replace(sb.length() - 1, sb.length(), "\n");
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
-
     public static List<String> readFromFile() throws IOException {
         String file = Files.readString(Path.of("./dataset_198_10.txt"), Charset.forName("UTF-8"));
         String splits[] = file.split("\n");

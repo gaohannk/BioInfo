@@ -32,8 +32,12 @@ public class Problem1 {
             String current = getNodehasOutEdge(finalCycle, graph);
             List<String> cycle = new LinkedList<>();
             cycle = formACycle(current, cycle, graph);
+//            System.out.println("Current: ");
+//            printCycle(cycle);
             removeNoOutEdgeNode(graph);
             mergeCycle(finalCycle, cycle);
+//            System.out.println("Merge: ");
+//            printCycle(finalCycle);
 
         }
         return finalCycle;

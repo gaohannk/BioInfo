@@ -34,13 +34,28 @@ public class PrintUtils {
     }
 
     public static <T> void printCycle(List<T> list) {
+        if(list.size()==0){
+            return;
+        }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
             sb.append(list.get(i) + "->");
         }
+
         System.out.println(sb.delete(sb.length() - 2, sb.length()));
     }
 
+    public static <T> void printPath(List<T> list) {
+        if(list.size()==0){
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i) + " -> ");
+        }
+
+        System.out.println(sb.delete(sb.length() - 4, sb.length()));
+    }
 
     public static <T> void printSetByLine(Set<T> set) {
         for (T item : set) {

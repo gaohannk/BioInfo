@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import static module2.week1.PrintUtils.constructToString;
+import static module2.common.PrintUtils.printGraph2;
 import static module2.week1.PrintUtils.writeToFile;
 
 public class Problem5 {
@@ -46,7 +46,7 @@ public class Problem5 {
         String splits[] = file.split("\n");
         List<String> kmerList = List.of(splits);
         Map<String, List<String>> graph = DeBruijnGraphFromkmersProblem(kmerList);
-        String res = constructToString(graph);
+        String res = printGraph2(graph);
         System.out.println(res);
         writeToFile(res, "./resource/module2/output1_5.txt");
     }

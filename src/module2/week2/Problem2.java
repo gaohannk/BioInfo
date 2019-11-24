@@ -23,6 +23,8 @@ public class Problem2 {
         contructDegreeMap(graph, outdegreeMap, indegreeMap);
         String out = findUnbalancedOutNode(outdegreeMap, indegreeMap);
         String in = findUnbalancedInNode(outdegreeMap, indegreeMap);
+        System.out.println("out:"+ out +" outdegree:"+outdegreeMap.get(out)+ "indegree:"+ indegreeMap.get(in));
+        System.out.println("in:"+ out +" outdegree:"+outdegreeMap.get(in)+ "indegree:"+ indegreeMap.get(in));
 
         Set<String> outEdgeNode = new HashSet<>();
         List<String> finalPath = new LinkedList<>();
@@ -113,6 +115,8 @@ public class Problem2 {
                                                           String outNode,
                                                           Map<String, List<String>> graph,
                                                           Map<String, Integer> indegreeMap) {
+        printCycle(cycle);
+
         // tail
         if (current.equals(inNode) && indegreeMap.get(inNode) == 0) {
             cycle.add(current);
@@ -135,6 +139,7 @@ public class Problem2 {
             if (graph.get(current).size() > 1) {
                 if (!next.equals(inNode)) {
                     graph.get(current).remove(next);
+                    indegreeMap.put(next, indegreeMap.get(next) - 1);
                     formACycleForEulerianPath(next, cycle, inNode, outNode, graph, indegreeMap);
                     break;
                 } else {
