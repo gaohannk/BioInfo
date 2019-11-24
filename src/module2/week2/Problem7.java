@@ -8,8 +8,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static common.PrintUtils.printListInOneline;
-import static module2.common.PrintUtils.printGraph2;
-import static module2.week2.Problem1.EulerianCycle;
+
 import static module2.week2.Problem2.EulerianPath;
 import static module2.week2.Problem6.StringSpelledByGappedPatterns;
 

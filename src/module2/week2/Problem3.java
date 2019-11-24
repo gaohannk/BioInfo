@@ -1,16 +1,12 @@
 package module2.week2;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
+import static common.ReadUtils.readKmerList;
 import static module2.week1.Problem5.DeBruijnGraphFromkmersProblem;
 import static module2.week2.Problem2.*;
 
 public class Problem3 {
-    public static int k;
 
     /**
      * The de Bruijn Graph Construction Problem;
@@ -43,20 +39,9 @@ public class Problem3 {
     }
 
     public static void main(String[] args) throws Exception {
-        List<String> kmerList = readFromFile("./resource/module2/dataset_203_7.txt");
+        List<String> kmerList = readKmerList("./resource/module2/dataset_203_7.txt");
         String text = StringReconstruction(kmerList);
         System.out.println(text);
-    }
-
-    private static List<String> readFromFile(String path) throws IOException {
-        String file = Files.readString(Path.of(path), Charset.forName("UTF-8"));
-        String splits[] = file.split("\n");
-        k = Integer.parseInt(splits[0]);
-        List<String> patterns = new LinkedList<>();
-        for (int i = 1; i < splits.length; i++) {
-            patterns.add(splits[i]);
-        }
-        return patterns;
     }
 
 }

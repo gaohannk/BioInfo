@@ -63,23 +63,6 @@ public class PrintUtils {
         }
     }
 
-    public static <T> void writeListToFile(List<T> list) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("output1.txt"));
-        for (int i = 0; i < list.size(); i++) {
-            writer.write(list.get(i) + "\n");
-            writer.flush();
-        }
-        writer.close();
-    }
-
-    public static <T> void writeSetToFile(Set<T> set) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("output1.txt"));
-        for (T item : set) {
-            writer.write(item + "\n");
-            writer.flush();
-        }
-        writer.close();
-    }
 
     public static void printProfile(double[][] profile) {
         for (int i = 0; i < 4; i++) {

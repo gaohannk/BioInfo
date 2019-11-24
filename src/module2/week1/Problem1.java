@@ -1,14 +1,12 @@
 package module2.week1;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-import static common.PrintUtils.writeSetToFile;
+import static common.WriteUtils.writeToFile;
 
 public class Problem1 {
 
@@ -34,7 +32,6 @@ public class Problem1 {
         String splits[] = file.split("\n");
         int k = Integer.parseInt(splits[0]);
         String text = splits[1];
-
-        writeSetToFile(StringCompositionProblem(text, k));
+        writeToFile(StringCompositionProblem(text, k), "output1.txt");
     }
 }

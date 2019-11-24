@@ -2,96 +2,39 @@ package module2.week2;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
-import static common.PrintUtils.printPath;
-import static module2.week2.PrintUtils.readFromFile;
+import static common.PrintUtils.*;
+import static common.ReadUtils.readKmerList;
+import static module2.week1.Problem5.DeBruijnGraphFromkmersProblem;
+import static module2.week2.Problem8.MaximalNonBranchingPaths;
 
 public class Problem8_2 {
-    /**
-     * Contig Generation Problem: Generate the contigs from a collection of reads (with imperfect coverage).
-     * Input: A collection of k-mers Patterns.
-     * Output: All contigs in DeBruijn(Patterns).
-     * @throws IOException
-     */
-    public static List<List<String>> MaximalNonBranchingPaths(Map<String, List<String>> graph){
-        Map<String, Integer> outdegreeMap = new HashMap<>();
-        Map<String, Integer> indegreeMap = new HashMap<>();
+	/**
+	 * Contig Generation Problem: Generate the contigs from a collection of reads (with imperfect coverage).
+	 * Input: A collection of k-mers Patterns.
+	 * Output: All contigs in DeBruijn(Patterns).
+	 *
+	 * @throws IOException
+	 */
+	public static List<String> ContigGenerationProblem(List<String> kmerlist) {
+		Map<String, List<String>> graph = DeBruijnGraphFromkmersProblem(kmerlist);
+		List<List<String>> paths = MaximalNonBranchingPaths(graph);
+		return fromPathToContigs(paths);
+	}
 
-        contructDegreeMap(graph, outdegreeMap, indegreeMap);
-        Set<String> visited = new HashSet<>();
-        List<List<String>> res = new LinkedList<>();
-        for(String node: graph.keySet()){
-            if(!isOneInOneOutNode(node, outdegreeMap, indegreeMap)){
-                if(outdegreeMap.getOrDefault(node,0) > 0){
-                    visited.add(node);
-                    for(String outNode: graph.get(node)){
-                        List<String> path = new LinkedList<>();
-                        path.add(node);
-                        visited.add(outNode);
-                        if(isOneInOneOutNode(outNode, outdegreeMap, indegreeMap)){
-                            path.add(outNode);
-                            dfs(path, outNode, graph, outdegreeMap, indegreeMap, visited);
-                        }else{
-                            path.add(outNode);
-                        }
-                        res.add(path);
-                    }
-                }
-            }
-        }
-        for(String node: graph.keySet()){
-            if(!visited.contains(node)){
-                List<String> path = new LinkedList<>();
-                path.add(node);
-                helper(path, node, graph,visited);
-                res.add(path);
-            }
-        }
-
-        return res;
+    public static List<String> fromPathToContigs(List<List<String>> paths) {
+        return paths.stream().map(path -> {
+            String prefix = path.get(0).substring(0, path.get(0).length() - 1);
+            String follow = path.stream().map(a -> a.substring(a.length() - 1)).reduce((a, b) -> (a + b)).get();
+            return prefix + follow;
+        }).collect(Collectors.toList());
     }
 
-    private static void helper(List<String> path, String node, Map<String, List<String>> graph, Set<String> visited) {
-        for(String outNode: graph.get(node)){
-            if(!visited.contains(outNode)){
-                path.add(outNode);
-                visited.add(outNode);
-                helper(path, outNode, graph, visited);
-            }
-        }
-    }
 
-    private static void dfs(List<String> path, String node, Map<String, List<String>> graph, Map<String, Integer> outdegreeMap, Map<String, Integer> indegreeMap, Set<String> visited) {
-        for(String outNode: graph.get(node)){
-            visited.add(outNode);
-            if(isOneInOneOutNode(outNode, outdegreeMap, indegreeMap)){
-                path.add(outNode);
-                dfs(path, outNode, graph, outdegreeMap,indegreeMap, visited);
-            }else{
-                path.add(outNode);
-                return;
-            }
-        }
-    }
-
-    private static boolean isOneInOneOutNode(String node, Map<String, Integer> outdegreeMap, Map<String, Integer> indegreeMap) {
-        return outdegreeMap.getOrDefault(node,0) == 1 && indegreeMap.getOrDefault(node,0 ) == 1;
-    }
-
-    private static void contructDegreeMap(Map<String, List<String>> graph, Map<String, Integer> outdegreeMap, Map<String, Integer> indegreeMap) {
-        for (String outNode : graph.keySet()) {
-            outdegreeMap.put(outNode, graph.getOrDefault(outNode, new LinkedList<>()).size());
-            for (String inNode : graph.get(outNode)) {
-                indegreeMap.put(inNode, indegreeMap.getOrDefault(inNode, 0) + 1);
-            }
-        }
-    }
-
-    public static void main(String[] args) throws IOException {
-        Map<String, List<String>> graph = readFromFile("./resource/module2/dataset_6207_2.txt");
-        List<List<String>> paths = MaximalNonBranchingPaths(graph);
-        for(List<String> path : paths) {
-            printPath(path);
-        }
-    }
+	public static void main(String[] args) throws IOException {
+		List<String> kmerlist = readKmerList("./resource/module2/dataset_205_5.txt");
+		List<String> contigs = ContigGenerationProblem(kmerlist);
+        printListByLine(contigs);
+	}
 }

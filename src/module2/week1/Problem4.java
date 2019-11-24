@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import static module2.common.PrintUtils.printGraph2;
+import static module2.common.PrintUtils.printGraph;
 import static module2.week1.PrintUtils.writeToFile;
 
 public class Problem4 {
@@ -48,7 +48,7 @@ public class Problem4 {
         String text = splits[1];
 
         Map<String, List<String>> graph = DeBruijnGraphFromStringProblem(k, text);
-        String res = printGraph2(graph);
+        String res = printGraph(graph);
         System.out.println(res);
         writeToFile(res, "./resource/module2/output1_4.txt");
     }
