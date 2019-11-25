@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static module1.Constant.nucle;
+import static common.Constant.nucle;
 import static common.PrintUtils.printListInOneline;
 import static module1.week1.Week1.numberToPattern;
 import static module1.week1.Week1.patternToNumber;

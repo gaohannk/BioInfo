@@ -1,15 +1,8 @@
 package common;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static module1.Constant.nucle;
+import static common.Constant.nucle;
 
 public class PrintUtils {
     public static <T> void printListInOneline(List<T> list) {

@@ -1,6 +1,6 @@
 package module1.week3;
 
-import module1.Constant;
+import common.Constant;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -11,7 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static module1.Constant.nucle;
+import static common.Constant.nucle;
 import static common.PrintUtils.printListByLine;
 import static module1.week1.Week1.numberToPattern;
 import static module1.week2.Week2.ApproximatePatternCount;
