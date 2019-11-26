@@ -52,7 +52,7 @@ public class Problem7 {
 			candidatePeptides.clear();
 			candidatePeptides.addAll(expend);
 		}
-		return convertToMassFormat(finalPeptides);
+		return finalPeptides;
 	}
 
 	private static List<String> convertToMassFormat(List<String> finalPeptides) {
@@ -74,7 +74,7 @@ public class Problem7 {
 	 * @param spectrum
 	 * @return
 	 */
-	private static boolean consistent(List<Integer> candidateSpectrum, List<Integer> spectrum) {
+	public static boolean consistent(List<Integer> candidateSpectrum, List<Integer> spectrum) {
 		Map<Integer, Integer> candidateMap = new HashMap<>();
 		Map<Integer, Integer> spectrumMap = new HashMap<>();
 		for(int mass: candidateSpectrum){
@@ -118,6 +118,8 @@ public class Problem7 {
 		String text = Files.readString(Path.of("./resource/module2/dataset_100_6.txt"), Charset.forName("UTF-8"));
 		List<Integer> spectrum = Arrays.stream(text.replace("\n", "").split(" "))
 				.map( e-> Integer.parseInt(e)).collect(Collectors.toList());
-		printListInOneline(CyclopeptideSequencing(spectrum));
+		printListInOneline(convertToMassFormat(CyclopeptideSequencing(spectrum)));
+
+
 	}
 }

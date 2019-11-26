@@ -14,6 +14,29 @@ public class Constant {
 	public static List<Character> Alphabet = List.of('G', 'A', 'S', 'P', 'V', 'T', 'C', 'I', 'L', 'N', 'D', 'K', 'Q', 'E', 'M', 'H', 'F', 'R', 'Y', 'W');
 	public static List<Character> NoDupMassAlphabet = List.of('G', 'A', 'S', 'P', 'V', 'T', 'C', 'I', 'N', 'D', 'K', 'E', 'M', 'H', 'F', 'R', 'Y', 'W');
 
+	public static Map<Character, Integer> CountTable = new HashMap<>() {{
+		put('A', 4);
+		put('C', 2);
+		put('D', 2);
+		put('E', 2);
+		put('F', 2);
+		put('G', 4);
+		put('H', 2);
+		put('I', 3);
+		put('K', 2);
+		put('L', 6);
+		put('M', 1);
+		put('N', 2);
+		put('P', 4);
+		put('Q', 2);
+		put('R', 6);
+		put('S', 6);
+		put('T', 4);
+		put('V', 4);
+		put('W', 1);
+		put('Y', 2);
+	}};
+
 	static
 	{
 		String text = null;

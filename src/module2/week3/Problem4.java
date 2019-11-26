@@ -49,8 +49,6 @@ public class Problem4 {
 		return linearSpectrum;
 	}
 
-
-
 	public static void main(String[] args) throws IOException {
 		String text = Files.readString(Path.of("./resource/module2/dataset_4912_2.txt"), Charset.forName("UTF-8"));
 		String peptide = text.replace("\n", "");
