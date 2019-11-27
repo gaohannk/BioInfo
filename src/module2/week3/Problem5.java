@@ -1,8 +1,6 @@
 package module2.week3;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,7 +17,7 @@ public class Problem5 {
 	 *
 	 * @throws IOException
 	 */
-	private static long CountingPeptideswithGivenMassProblem(int n) {
+	private static long CountingPeptideswithGivenMass(int n) {
 		long table[] = new long[n+1];
 		table[0] = 1;
 		for (int i = 1; i < n+1; i++) {
@@ -40,6 +38,6 @@ public class Problem5 {
 	public static void main(String[] args) throws IOException {
 		String text = Files.readString(Path.of("./resource/module2/dataset_99_2.txt"), Charset.forName("UTF-8"));
 		int n = Integer.parseInt(text.replace("\n", ""));
-		System.out.println(CountingPeptideswithGivenMassProblem(n));
+		System.out.println(CountingPeptideswithGivenMass(n));
 	}
 }

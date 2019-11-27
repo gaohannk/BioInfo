@@ -2,7 +2,7 @@ package module2.week3;
 
 import java.util.List;
 
-import static module2.week3.Problem1.ProteinTranslationProblem;
+import static module2.week3.Problem1.ProteinTranslation;
 import static module2.week3.Problem4.LinearSpectrum;
 import static module2.week3.Problem4_2.CyclicSpectrum;
 import static module2.week3.Problem7.consistent;
@@ -20,7 +20,7 @@ public class Quiz {
 	public static void main(String[] args) {
 		List<String> RNAs = List.of("CCUCGUACUGAUAUUAAU", "CCCAGUACCGAGAUGAAU", "CCCAGGACUGAGAUCAAU", "CCUCGUACAGAAAUCAAC");
 		for (String RNA : RNAs) {
-			System.out.println(ProteinTranslationProblem(RNA));
+			System.out.println(ProteinTranslation(RNA));
 		}
 
 		System.out.println(NumOfDNATranslateToProtein("SYNGE"));

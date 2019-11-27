@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static common.PrintUtils.printListByLine;
-import static module2.week3.Problem2.PeptideEncodingProblem;
+import static module2.week3.Problem2.PeptideEncoding;
 
 public class Problem2_2 {
 
@@ -18,6 +18,6 @@ public class Problem2_2 {
 			DNA.append(splits[i]);
 		}
 		String peptide = "VKLFPWFNQY";
-		printListByLine(PeptideEncodingProblem(DNA.toString(), peptide));
+		printListByLine(PeptideEncoding(DNA.toString(), peptide));
 	}
 }

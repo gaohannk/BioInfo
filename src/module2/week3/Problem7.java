@@ -37,15 +37,15 @@ public class Problem7 {
 			List<String> expend = expend(candidatePeptides);
 			Iterator<String> it = expend.iterator();
 			while (it.hasNext()){
-				String peptides = it.next();
+				String peptide = it.next();
 				int parentMassOfSpectrum = parentMass(spectrum);
-				if(mass(peptides) == parentMassOfSpectrum){
+				if(mass(peptide) == parentMassOfSpectrum){
 					// equal() method compare each element in list
-					if(CyclicSpectrum(peptides).equals(spectrum) && !finalPeptides.contains(peptides)){
-						finalPeptides.add(peptides);
+					if(CyclicSpectrum(peptide).equals(spectrum) && !finalPeptides.contains(peptide)){
+						finalPeptides.add(peptide);
 					}
 					it.remove();
-				} else if (!consistent(LinearSpectrum(peptides), spectrum)){
+				} else if (!consistent(LinearSpectrum(peptide), spectrum)){
 					it.remove();
 				}
 			}
@@ -55,7 +55,7 @@ public class Problem7 {
 		return finalPeptides;
 	}
 
-	private static List<String> convertToMassFormat(List<String> finalPeptides) {
+	public static List<String> convertToMassFormat(List<String> finalPeptides) {
 		return finalPeptides.stream().map( peptide -> {
 			StringBuilder sb = new StringBuilder();
 			for(char c: peptide.toCharArray()) {
@@ -91,11 +91,11 @@ public class Problem7 {
 		return true;
 	}
 
-	private static int parentMass(List<Integer> spectrum) {
+	public static int parentMass(List<Integer> spectrum) {
 		return spectrum.stream().max(Integer::compareTo).get();
 	}
 
-	private static int mass(String peptides) {
+	public static int mass(String peptides) {
 		int mass = 0;
 		for(char amino: peptides.toCharArray()){
 			mass += MASSTABLE.get(amino);
@@ -103,7 +103,7 @@ public class Problem7 {
 		return mass;
 	}
 
-	private static List<String> expend(List<String> candidatePeptides) {
+	public static List<String> expend(List<String> candidatePeptides) {
 		List<String> expend = new LinkedList<>();
 		for(String peptides: candidatePeptides){
 			for(char amino: Constant.NoDupMassAlphabet){
@@ -119,7 +119,5 @@ public class Problem7 {
 		List<Integer> spectrum = Arrays.stream(text.replace("\n", "").split(" "))
 				.map( e-> Integer.parseInt(e)).collect(Collectors.toList());
 		printListInOneline(convertToMassFormat(CyclopeptideSequencing(spectrum)));
-
-
 	}
 }

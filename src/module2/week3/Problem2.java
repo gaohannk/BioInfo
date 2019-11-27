@@ -19,7 +19,7 @@ public class Problem2 {
 	 * Output: All substrings of Text encoding Peptide (if any such substrings exist).
 	 */
 
-	public static List<String> PeptideEncodingProblem(String DNA, String peptide) {
+	public static List<String> PeptideEncoding(String DNA, String peptide) {
 		List<String> res = new LinkedList<>();
 		int len = peptide.length() * 3;
 		for (int i = 0; i < DNA.length() - len+1; i++) {
@@ -69,6 +69,6 @@ public class Problem2 {
 		String text = Files.readString(Path.of("./resource/module2/dataset_96_7.txt"), Charset.forName("UTF-8"));
 		String DNA = text.split("\n")[0];
 		String peptide = text.split("\n")[1];
-		printListByLine(PeptideEncodingProblem(DNA, peptide));
+		printListByLine(PeptideEncoding(DNA, peptide));
 	}
 }

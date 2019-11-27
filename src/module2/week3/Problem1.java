@@ -14,7 +14,7 @@ public class Problem1 {
 	 * Output: The translation of Pattern into an amino acid string Peptide.
 	 */
 
-	public static String ProteinTranslationProblem(String RNA) {
+	public static String ProteinTranslation(String RNA) {
 		StringBuilder protein = new StringBuilder();
 		for (int i = 0; i < RNA.length(); i=i+3) {
 			String codons = RNA.substring(i, i + 3);
@@ -28,6 +28,6 @@ public class Problem1 {
 	public static void main(String[] args) throws IOException {
 		String RNA = Files.readString(Path.of("./resource/module2/dataset_96_4.txt"), Charset.forName("UTF-8"));
 		RNA.replace("\n","");
-		System.out.println(ProteinTranslationProblem(RNA));
+		System.out.println(ProteinTranslation(RNA));
 	}
 }
