@@ -26,9 +26,8 @@ public class Problem1 {
         return res;
     }
 
-
     public static void main(String[] args) throws IOException {
-        String file = Files.readString(Path.of("./dataset_199_6.txt"), Charset.forName("UTF-8"));
+        String file = Files.readString(Path.of("./resource/module2/dataset_199_6.txt"), Charset.forName("UTF-8"));
         String splits[] = file.split("\n");
         int k = Integer.parseInt(splits[0]);
         String text = splits[1];
