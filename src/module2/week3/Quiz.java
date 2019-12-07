@@ -1,5 +1,7 @@
 package module2.week3;
 
+import module2.common.Constant;
+
 import java.util.List;
 
 import static module2.week3.Problem1.ProteinTranslation;

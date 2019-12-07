@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
 
-import static module2.week3.Constant.MASSTABLE;
+import static module2.common.Constant.MASSTABLE;
 
 public class Problem5 {
 

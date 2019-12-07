@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Problem4 {
     /**
@@ -75,7 +72,7 @@ public class Problem4 {
                 } else if (s[i][j] == s[i][j - 1]) {
                     backtrack[i][j] = 'R';
                 } else if (s[i][j] == s[i - 1][j - 1] + match) {
-                    backtrack[i][j] = 'T'; // T lower right corner
+                    backtrack[i][j] = 'C'; // T lower right corner
                 }
             }
         }

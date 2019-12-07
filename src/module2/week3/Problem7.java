@@ -1,5 +1,7 @@
 package module2.week3;
 
+import module2.common.Constant;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -8,7 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static common.PrintUtils.printListInOneline;
-import static module2.week3.Constant.MASSTABLE;
+import static module2.common.Constant.MASSTABLE;
 import static module2.week3.Problem4.LinearSpectrum;
 import static module2.week3.Problem4_2.CyclicSpectrum;
 

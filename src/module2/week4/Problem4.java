@@ -7,12 +7,10 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static common.PrintUtils.printListInOneline;
-import static module2.week3.Constant.MASSTABLE;
+import static module2.common.Constant.MASSTABLE;
 import static module2.week3.Problem7.*;
 import static module2.week4.Problem1.CyclopeptideScoring;
 import static module2.week4.Problem3.Trim;
-import static module2.week4.Problem3.Trim2;
 
 public class Problem4 {
 	/**

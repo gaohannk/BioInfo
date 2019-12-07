@@ -1,11 +1,13 @@
 package module2.week3;
 
+import module2.common.Constant;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static module2.week3.Constant.CONDONTABLE;
+import static module2.common.Constant.CONDONTABLE;
 
 public class Problem1 {
 	/**

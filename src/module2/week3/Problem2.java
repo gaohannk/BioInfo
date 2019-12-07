@@ -1,5 +1,7 @@
 package module2.week3;
 
+import module2.common.Constant;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -9,7 +11,7 @@ import java.util.List;
 
 import static common.Constant.dic;
 import static common.PrintUtils.printListByLine;
-import static module2.week3.Constant.CONDONTABLE;
+import static module2.common.Constant.CONDONTABLE;
 
 public class Problem2 {
 	/**
