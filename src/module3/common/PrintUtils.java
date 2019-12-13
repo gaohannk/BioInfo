@@ -27,7 +27,7 @@ public class PrintUtils {
         printListInOneline(pairReads.stream().map(pair -> pair.read1 + "|" + pair.read2).collect(Collectors.toList()));
     }
 
-    public static  void printMatrix(char[][] matrix, String delimeter) {
+    public static void printMatrix(char[][] matrix, String delimeter) {
         for (char[] line : matrix) {
             for (char e : line) {
                 System.out.print(e + delimeter);
@@ -54,10 +54,13 @@ public class PrintUtils {
         } else if (backtrack[i][j] == 'R') {
             char c = s.charAt(cur--);
             return OutputLCS2(backtrack, s, i, j - 1, cur) + c;
-        } else {
+        } else if (backtrack[i][j] == 'C') {
             char c = s.charAt(cur--);
             return OutputLCS2(backtrack, s, i - 1, j - 1, cur) + c;
+        } else if (backtrack[i][j] == ' ') {
+            return "";
         }
+        return "";
     }
 
     public static String OutputLCS(char[][] backtrack, String s, int i, int j, int cur) {
@@ -69,9 +72,12 @@ public class PrintUtils {
             return OutputLCS(backtrack, s, i - 1, j, cur) + c;
         } else if (backtrack[i][j] == 'R') {
             return OutputLCS(backtrack, s, i, j - 1, cur) + "-";
-        } else {
+        } else if (backtrack[i][j] == 'C') {
             char c = s.charAt(cur--);
             return OutputLCS(backtrack, s, i - 1, j - 1, cur) + c;
+        } else if (backtrack[i][j] == ' ') {
+            return "";
         }
+        return "";
     }
 }

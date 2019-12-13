@@ -62,10 +62,8 @@ public class Problem4 {
         char[][] backtrack = new char[v.length() + 1][w.length() + 1];
         for (int i = 1; i <= v.length(); i++) {
             for (int j = 1; j <= w.length(); j++) {
-                int match = 0;
-                if (v.charAt(i - 1) == w.charAt(j - 1)) {
-                    match = 1;
-                }
+                int match = v.charAt(i - 1) == w.charAt(j - 1) ? 1 : 0;
+
                 s[i][j] = Math.max(Math.max(s[i - 1][j], s[i][j - 1]), s[i - 1][j - 1] + match);
                 if (s[i][j] == s[i - 1][j]) {
                     backtrack[i][j] = 'D';

@@ -9,18 +9,40 @@ import static module3.common.Constant.AMINO;
 import static module3.common.Constant.BLOSUM62;
 import static module3.common.PrintUtils.OutputLCS;
 import static module3.common.PrintUtils.OutputLCS2;
+import static module3.week2.Problem1.GlobalAlignment;
 
-public class Problem1 {
+public class Problem4 {
 
-    public static int maxAlignmentScore;
-    public static final int SIGMA = 5;
+    public static final int SIGMA = 1;
+    public static int maxAlignmentScore = Integer.MIN_VALUE;
+    public static String alignmentV;
+    public static String alignmentW;
 
     /**
-     * Code Challenge: Solve the Global Alignment Problem.
+     * Fitting Alignment Problem: Construct a highest-scoring fitting alignment between two strings.
      *
-     * Input: Two protein strings written in the single-letter amino acid alphabet.
-     * Output: The maximum alignment score of these strings followed by an alignment achieving this maximum score. Use the BLOSUM62 scoring matrix for matches and mismatches as well as the indel penalty σ = 5.
+     * Input: Strings v and w as well as a matrix Score.
+     * Output: A highest-scoring fitting alignment of v and w as defined by the scoring matrix Score.
+     *
+     * @throws IOException
      */
+    public static int FittingAlignment(String v, String w) {
+        int maxScore = Integer.MIN_VALUE;
+        for (int i = 0; i < v.length(); i++) {
+            for (int j = i + 1; j < v.length(); j++) {
+                String vprime = v.substring(i, j);
+                char[][] backtrack = GlobalAlignment(vprime, w);
+                if (maxAlignmentScore > maxScore) {
+                    maxScore = maxAlignmentScore;
+                    alignmentV = OutputLCS(backtrack, vprime, vprime.length(), w.length(), vprime.length() - 1);
+                    alignmentW = OutputLCS2(backtrack, w, vprime.length(), w.length(), w.length() - 1);
+                }
+            }
+        }
+
+        return maxScore;
+    }
+
     public static char[][] GlobalAlignment(String v, String w) {
         int[][] s = new int[v.length() + 1][w.length() + 1];
         char[][] backtrack = new char[v.length() + 1][w.length() + 1];
@@ -36,7 +58,7 @@ public class Problem1 {
 
         for (int i = 1; i <= v.length(); i++) {
             for (int j = 1; j <= w.length(); j++) {
-                int match = BLOSUM62[AMINO.indexOf(v.charAt(i - 1))][AMINO.indexOf(w.charAt(j - 1))];
+                int match = v.charAt(i - 1) == w.charAt(j - 1) ? 1 : -SIGMA;
                 s[i][j] = Math.max(Math.max(s[i - 1][j], s[i][j - 1]) - SIGMA, s[i - 1][j - 1] + match);
                 if (s[i][j] == s[i - 1][j] - SIGMA) {
                     backtrack[i][j] = 'D';
@@ -53,12 +75,12 @@ public class Problem1 {
 
 
     public static void main(String[] args) throws IOException {
-        String text = Files.readString(Path.of("./resource/module3/dataset_247_3.txt"), Charset.forName("UTF-8"));
+        String text = Files.readString(Path.of("./resource/module3/dataset_248_5.txt"), Charset.forName("UTF-8"));
         String v = text.split("\n")[0];
         String w = text.split("\n")[1];
-        char[][] backtrack = GlobalAlignment(v, w);
-        System.out.println(maxAlignmentScore);
-        System.out.println(OutputLCS(backtrack, v, v.length(), w.length(), v.length() - 1));
-        System.out.println(OutputLCS2(backtrack, w, v.length(), w.length(), w.length() - 1));
+        System.out.println(FittingAlignment(v, w));
+        System.out.println(alignmentV);
+        System.out.println(alignmentW);
+
     }
 }
