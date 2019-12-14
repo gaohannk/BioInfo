@@ -40,6 +40,7 @@ public class Problem3 {
 	 * midNode ← midNode + 1
 	 * LinearSpaceAlignment(v, w, midNode, bottom, middle, right)
 	 */
+	// TODO verify
 	public static void LinearSpaceAlignment(String v, String w, int top, int bottom, int left, int right) {
 		if (left >= right) {
 			return;
