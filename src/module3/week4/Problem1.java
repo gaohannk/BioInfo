@@ -70,7 +70,6 @@ public class Problem1 {
 	public static void main(String[] args) throws IOException {
 		String text = Files.readString(Path.of("./resource/module3/dataset_286_4.txt"), Charset.forName("UTF-8"));
 		String[] input = text.replace("\n", "").split(" ");
-		//GreedySorting(Arrays.stream(input).collect(Collectors.toList()));
 		printListByLine(GreedySorting(Arrays.stream(input).collect(Collectors.toList())));
 	}
 }

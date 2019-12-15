@@ -10,7 +10,7 @@ public class PrintUtils {
         for (int i = 0; i < list.size(); i++) {
             sb.append(list.get(i) + " ");
         }
-        System.out.println(sb.toString().trim());
+        System.out.print(sb.toString().trim());
     }
 
     public static <T> void printListByLine(List<T> list) {
