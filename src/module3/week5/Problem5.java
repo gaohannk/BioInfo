@@ -25,7 +25,7 @@ public class Problem5 {
 	 */
 	public static List<String> TwoBreakOnGenomeGraph(List<String> input, int i1, int i2, int i3, int i4) {
 		List<String> afterBreak = new LinkedList<>();
-
+		boolean reverse = false;
 		for (String edge : input) {
 			int node = Integer.parseInt(edge.split(", ")[0]);
 			int node2 = Integer.parseInt(edge.split(", ")[1]);
@@ -46,8 +46,12 @@ public class Problem5 {
 			}
 			if (node == i4 && node2 == i3) {
 				String coloredEdge = i4 + ", " + i2;
+				reverse = true;
 				afterBreak.add(coloredEdge);
 				continue;
+			}
+			if(reverse){
+				edge = edge.split(", ")[1] +", "+ edge.split(", ")[0];
 			}
 			afterBreak.add(edge);
 		}
@@ -64,7 +68,7 @@ public class Problem5 {
 		int i3 = Integer.parseInt(indices[2]);
 		int i4 = Integer.parseInt(indices[3]);
 		List<String> afterBreak = TwoBreakOnGenomeGraph(input, i1, i2, i3, i4);
-		System.out.println(afterBreak.stream().collect(Collectors.joining(", ")));
+		System.out.println(afterBreak.stream().map(e -> "(" + e + ")").collect(Collectors.joining(", ")));
 	}
 
 }

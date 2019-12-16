@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static common.PrintUtils.printListByLine;
 import static common.PrintUtils.printListInOneline;
 
 public class Problem1 {
