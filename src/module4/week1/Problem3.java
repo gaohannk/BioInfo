@@ -1,8 +1,5 @@
 package module4.week1;
 
-import module4.common.Pair;
-
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -54,7 +51,6 @@ public class Problem3 {
 				System.out.println(node + "->" + p.des + ":" + p.dis);
 			}
 		}
-
 	}
 
 	public static int[] findIandK(int[][] matrix, int n) throws Exception {

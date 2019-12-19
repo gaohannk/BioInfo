@@ -1,10 +1,10 @@
-package module4.common;
+package module4.week2;
 
 public class Pair {
 	public int des;
-	public int dis;
+	public double dis;
 
-	public Pair(int des, int dis) {
+	public Pair(int des, double dis) {
 		this.des = des;
 		this.dis = dis;
 	}

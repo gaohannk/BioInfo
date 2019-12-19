@@ -1,7 +1,5 @@
 package module4.week1;
 
-import module4.common.Pair;
-
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -48,7 +46,7 @@ public class Problem1 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String text = Files.readString(Path.of("./resource/module3/dataset_10328_12.txt"), Charset.forName("UTF-8"));
+		String text = Files.readString(Path.of("./resource/module4/dataset_10328_12.txt"), Charset.forName("UTF-8"));
 		String[] splits = text.split("\n");
 		int n = Integer.parseInt(splits[0]);
 		Map<Integer, List<Pair>> graph = new HashMap<>();

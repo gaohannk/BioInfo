@@ -1,21 +1,16 @@
-package module4.week1;
+package module4.week2;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static module3.common.PrintUtils.printMatrix;
 
-public class Problem2 {
-	/**
-	 * Code Challenge: Solve the Limb Length Problem.
-	 * <p>
-	 * Input: An integer n, followed by an integer j between 0 and n - 1, followed by a space-separated additive distance matrix D (whose elements are integers).
-	 * Output: The limb length of the leaf in Tree(D) corresponding to row j of this distance matrix (use 0-based indexing)
-	 */
+public class Quiz2_5 {
 	public static int LimbLength(int[][] matrix, int n, int j) {
 		int min = Integer.MAX_VALUE;
 		for (int i = 0; i < n; i++) {
@@ -29,7 +24,7 @@ public class Problem2 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String text = Files.readString(Path.of("./resource/module4/dataset_10329_11.txt"), Charset.forName("UTF-8"));
+		String text = Files.readString(Path.of("./resource/module4/quiz2_5.txt"), Charset.forName("UTF-8"));
 		String[] splits = text.split("\n");
 		int n = Integer.parseInt(splits[0]);
 		int j = Integer.parseInt(splits[1]);
