@@ -24,9 +24,10 @@ public class Problem1 {
 
 	public static Map<Integer, List<Integer>> graphOfSpectrum(List<Integer> spectrum) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
-		spectrum.add(0);
-		for (int mass1 : spectrum) {
-			for (int mass2 : spectrum) {
+		List<Integer> iter= new LinkedList<>(spectrum);
+		iter.add(0);
+		for (int mass1 : iter) {
+			for (int mass2 : iter) {
 				if (mass1 < mass2 && MASSTABLE_REV.containsKey(mass2 - mass1)) {
 					if (map.containsKey(mass1)) {
 						map.get(mass1).add(mass2);
@@ -43,8 +44,8 @@ public class Problem1 {
 
 	public static void main(String[] args) throws IOException {
 		String text = Files.readString(Path.of("./resource/module4/dataset_11813_2.txt"), Charset.forName("UTF-8"));
-		String[] splits = text.split("\n");
-		List<Integer> spectrum = Arrays.stream(splits[0].split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+		String line = text.replace("\n", "");
+		List<Integer> spectrum = Arrays.stream(line.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
 		Map<Integer, List<Integer>> map = graphOfSpectrum(spectrum);
 		printMap(map);
 
