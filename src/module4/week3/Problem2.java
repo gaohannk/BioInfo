@@ -47,6 +47,7 @@ public class Problem2 {
 	 * @param root
 	 * @return
 	 */
+	// TODO verify
 	public static Node SmallParsimonyInUnrootedTree(Node root) {
 		// post order traversal
 		for (int idx = 0; idx < root.character.length; idx++) {
@@ -220,5 +221,6 @@ public class Problem2 {
         root[1] = SmallParsimonyInUnrootedTree(root[1]);
         System.out.println(root[0].score+ root[1].score+ getHammingDistance(root[0].character, root[1].character));
 		printEdgeInTree(root[0]);
+		printEdgeInTree(root[1]);
 	}
 }
