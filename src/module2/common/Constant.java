@@ -11,6 +11,7 @@ import java.util.Map;
 public class Constant {
     public static Map<String, Character> CONDONTABLE = new HashMap<>();
     public static Map<Character, Integer> MASSTABLE = new HashMap<>();
+    public static Map<Integer, Character> MASSTABLE_REV = new HashMap<>();
 
     public static List<Character> Alphabet = List.of('G', 'A', 'S', 'P', 'V', 'T', 'C', 'I', 'L', 'N', 'D', 'K', 'Q', 'E', 'M', 'H', 'F', 'R', 'Y', 'W');
     public static List<Character> NoDupMassAlphabet = List.of('G', 'A', 'S', 'P', 'V', 'T', 'C', 'I', 'N', 'D', 'K', 'E', 'M', 'H', 'F', 'R', 'Y', 'W');
@@ -59,6 +60,7 @@ public class Constant {
         for (String line : text.split("\n")) {
             if (line.split(" ").length == 2) {
                 MASSTABLE.put(line.split(" ")[0].charAt(0), Integer.parseInt(line.split(" ")[1]));
+                MASSTABLE_REV.put(Integer.parseInt(line.split(" ")[1]), line.split(" ")[0].charAt(0));
             }
         }
     }

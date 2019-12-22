@@ -13,6 +13,7 @@ public class Node {
     public Node left;
     public Node right;
     public Map<Character, Integer> symbolMap;
+    public int score;
 
     public Node(int id, int len) {
         this.id = id;
