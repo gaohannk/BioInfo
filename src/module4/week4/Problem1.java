@@ -48,7 +48,6 @@ public class Problem1 {
 		List<Integer> spectrum = Arrays.stream(line.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
 		Map<Integer, List<Integer>> map = graphOfSpectrum(spectrum);
 		printMap(map);
-
 	}
 
 	private static void printMap(Map<Integer, List<Integer>> map) {
