@@ -7,20 +7,16 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static module2.common.Constant.MASSTABLE;
 import static module2.common.Constant.MASSTABLE_REV;
 
-public class Problem4 {
+public class Problem5 {
 
 	/**
-     CODE CHALLENGE: Solve the Peptide Sequencing Problem.
-     Given: A space-delimited spectral vector Spectrum'.
-     Return: An amino acid string with maximum score against Spectrum'. For masses
-     with more than one amino acid, any choice may be used.
-
-     Note: When a spectral vector Spectrum' = s1 ... sm is given, it does not have a zero-th element; in your implementations, you should assume that s0 is equal to zero.
+	 * CODE CHALLENGE: Solve the Converting a Peptide Vector into a Peptide Problem.
+	 * Given: A space-delimited binary vector P.
+	 * Return: An amino acid string whose binary peptide vector matches P. For masses
+	 * with more than one amino acid, any choice may be used.
 	 */
 	public static String convertPeptideVectorToPeptide(int[] vector) {
 		List<Integer> list = new LinkedList<>();

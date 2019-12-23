@@ -15,10 +15,12 @@ public class Node {
     public Map<Character, Integer> symbolMap;
     public int score;
 
-    public Node(int id, int len) {
+    public Node(int id, int len, Node left, Node right) {
         this.id = id;
         this.character = new char[len];
         this.symbolMap = new HashMap<>();
+        this.left = left;
+        this.right = right;
         for (char c : nucle) {
             this.symbolMap.put(c, Integer.MAX_VALUE);
         }

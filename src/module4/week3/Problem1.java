@@ -177,20 +177,16 @@ public class Problem1 {
 			id = Integer.parseInt(splits[i].split("->")[0]);
 			char[] leftChars = splits[i].split("->")[1].toCharArray();
 			char[] rightChars = splits[i + 1].split("->")[1].toCharArray();
-			Node node = new Node(id, leftChars.length);
 			Node left = new Node(leaves++, leftChars);
 			Node right = new Node(leaves++, rightChars);
-			node.left = left;
-			node.right = right;
+			Node node = new Node(id, leftChars.length, left, right);
 			nodeMap.put(node.id, node);
 		}
 		for (int i = n + 1; i < splits.length; i += 2) {
 			id = Integer.parseInt(splits[i].split("->")[0]);
 			int left = Integer.parseInt(splits[i].split("->")[1]);
 			int right = Integer.parseInt(splits[i + 1].split("->")[1]);
-			Node node = new Node(id, nodeMap.get(left).character.length);
-			node.left = nodeMap.get(left);
-			node.right = nodeMap.get(right);
+			Node node = new Node(id, nodeMap.get(left).character.length, nodeMap.get(left), nodeMap.get(right));
 			nodeMap.put(node.id, node);
 		}
 		return nodeMap.get(id);

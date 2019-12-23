@@ -56,7 +56,7 @@ public class Problem2 {
 			int min = Integer.MAX_VALUE;
 			for (char c : nucle) {
 				int value = root.symbolMap.get(c);
-				if (min > value) {
+				if (min >= value) {
 					min = value;
 					root.character[idx] = c;
 				}
@@ -185,17 +185,18 @@ public class Problem2 {
 		return sb.toString();
 	}
 
-	private static Node[] constructTree(String[] splits, int n) {
+	private static Node constructTree(String[] splits, int n) {
 		int leaves = 0;
 		int id = -1;
+		int len = splits[1].split("->")[0].toCharArray().length;
 		Map<Integer, Node> nodeMap = new HashMap<>();
 		for (int i = 1; i < 1 + 2 * n; i += 4) {
 			id = Integer.parseInt(splits[i + 1].split("->")[0]);
 			char[] leftChars = splits[i + 1].split("->")[1].toCharArray();
 			char[] rightChars = splits[i + 3].split("->")[1].toCharArray();
-			Node node = new Node(id, leftChars.length);
 			Node left = new Node(leaves++, leftChars);
 			Node right = new Node(leaves++, rightChars);
+			Node node = new Node(id, len, left, right);
 			node.left = left;
 			node.right = right;
 			nodeMap.put(node.id, node);
@@ -204,23 +205,25 @@ public class Problem2 {
 			id = Integer.parseInt(splits[i + 1].split("->")[0]);
 			int left = Integer.parseInt(splits[i + 1].split("->")[1]);
 			int right = Integer.parseInt(splits[i + 3].split("->")[1]);
-			Node node = new Node(id, nodeMap.get(left).character.length);
-			node.left = nodeMap.get(left);
-			node.right = nodeMap.get(right);
+			Node node = new Node(id, len, nodeMap.get(left), nodeMap.get(right));
 			nodeMap.put(node.id, node);
 		}
-		return new Node[]{nodeMap.get(id - 1), nodeMap.get(id)};
+		id++;
+		Node root = new Node(id, len, nodeMap.get(id - 2), nodeMap.get(id - 1));
+		return root;
 	}
 
 	public static void main(String[] args) throws IOException {
 		String text = Files.readString(Path.of("./resource/module4/dataset_10335_12.txt"), Charset.forName("UTF-8"));
 		String[] splits = text.split("\n");
 		int n = Integer.parseInt(splits[0]);
-		Node[] root = constructTree(splits, n);
-		root[0] = SmallParsimonyInUnrootedTree(root[0]);
-        root[1] = SmallParsimonyInUnrootedTree(root[1]);
-        System.out.println(root[0].score+ root[1].score+ getHammingDistance(root[0].character, root[1].character));
-		printEdgeInTree(root[0]);
-		printEdgeInTree(root[1]);
+		Node root = constructTree(splits, n);
+		root = SmallParsimonyInUnrootedTree(root);
+		System.out.println(root.left.score + root.right.score + getHammingDistance(root.left.character, root.right.character));
+		printEdgeInTree(root.left);
+		printEdgeInTree(root.right);
+		System.out.println(getEdge(root.left.character, root.right.character));
+		System.out.println(getEdge(root.right.character, root.left.character));
+
 	}
 }

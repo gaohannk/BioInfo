@@ -6,8 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-import static common.Constant.nucle;
-
 public class Problem3 {
 
 	/**
@@ -17,11 +15,20 @@ public class Problem3 {
 	 * Output: Two adjacency lists representing the nearest neighbors of the tree with respect to e. Separate the adjacency lists with a blank line.
 	 * Extra Dataset
 	 **/
-	public static Node[] NearestNeighborsofTree(Node src, Node dest) {
+	// TODO alogirthm is incorrect, need to change
+	public static Node[] NearestNeighborsOfTree(Node src, Node dest) {
 		Node left = src.left;
 		Node right = dest.right;
 		src.left = right;
 		dest.right = left;
+		return new Node[]{src, dest};
+	}
+
+	public static Node[] NearestNeighborsofTree2(Node src, Node dest) {
+		Node leftRight = src.right;
+		Node rightRight = dest.right;
+		src.right = rightRight;
+		dest.right = leftRight;
 		return new Node[]{src, dest};
 	}
 
@@ -51,7 +58,7 @@ public class Problem3 {
 	}
 
 	private static Map<Integer, Node> constructTree(String[] splits) {
-		int id = -1;
+		int id;
 		Map<Integer, Node> nodeMap = new HashMap<>();
 		for (int i = 1; i < splits.length - 2; i += 4) {
 			id = Integer.parseInt(splits[i + 1].split("->")[0]);
@@ -64,6 +71,10 @@ public class Problem3 {
 			node.right = rightNode;
 			nodeMap.put(node.id, node);
 		}
+
+		int left = Integer.parseInt(splits[splits.length-1].split("->")[0]);
+		int right = Integer.parseInt(splits[splits.length-1].split("->")[1]);
+
 		return nodeMap;
 	}
 
@@ -81,6 +92,14 @@ public class Problem3 {
 			this.left = left;
 			this.right = right;
 		}
+
+		public String toString() {
+			return "Node{" +
+					"id=" + id +
+					", left=" + left +
+					", right=" + right +
+					'}';
+		}
 	}
 
 
@@ -90,9 +109,27 @@ public class Problem3 {
 		int src = Integer.parseInt(splits[0].split(" ")[0]);
 		int dest = Integer.parseInt(splits[0].split(" ")[1]);
 		Map<Integer, Node> map = constructTree(splits);
-		Node[] root = NearestNeighborsofTree(map.get(src), map.get(dest));
+//		System.out.println(map);
+//		Node left = map.get(src);
+//		Node right = map.get(dest);
+//		printEdgeInTree(map.get(src));
+//		printEdgeInTree(map.get(dest));
+//		System.out.println(getEdge(left, right));
+//		System.out.println(getEdge(right, left));
+
+		Node[] root = NearestNeighborsOfTree(map.get(src), map.get(dest));
+		System.out.println();
 		printEdgeInTree(root[0]);
 		printEdgeInTree(root[1]);
-        System.out.println();
-    }
+		System.out.println(getEdge(root[0], root[1]));
+		System.out.println(getEdge(root[1], root[0]));
+		System.out.println();
+
+		map = constructTree(splits);
+		root = NearestNeighborsofTree2(map.get(src), map.get(dest));
+		printEdgeInTree(root[0]);
+		printEdgeInTree(root[1]);
+		System.out.println(getEdge(root[0], root[1]));
+		System.out.println(getEdge(root[1], root[0]));
+	}
 }
