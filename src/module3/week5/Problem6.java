@@ -28,10 +28,12 @@ public class Problem6 {
 	 * Output: The genome P' resulting from applying the 2-break operation 2-BreakOnGenome(GenomeGraph i1 , i2 , i3 , i4 ).
 	 *
 	 */
+	// TODO Depend on problem 5
 	public static List<List<Integer>> TwoBreakOnGenome(List<List<Integer>> GenomeGraph, int i1, int i2, int i3, int i4) {
 		List<String> colorEdge = ColoredEdges(GenomeGraph);
+		System.out.println(colorEdge.stream().map(e -> "(" + e + ")").collect(Collectors.joining(", ")));
 		List<String> afterBreak = TwoBreakOnGenomeGraph(colorEdge, i1, i2, i3, i4);
-		System.out.println(afterBreak);
+		System.out.println(afterBreak.stream().map(e -> "(" + e + ")").collect(Collectors.joining(", ")));
 		return GraphToGenome(afterBreak);
 	}
 

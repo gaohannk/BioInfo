@@ -8,7 +8,6 @@ import java.util.*;
 
 public class Problem4 {
 
-    public static final int SIGMA = 0;
     public static int maxAlignmentScore = Integer.MIN_VALUE;
     public static String[][][] backtrack;
 

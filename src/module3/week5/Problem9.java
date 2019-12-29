@@ -39,7 +39,7 @@ public class Problem9 {
 		for (char c : dna.toCharArray()) {
 			complement.append(dic.get(c));
 		}
-		return complement.toString();
+		return complement.reverse().toString();
 	}
 
 	public static void main(String[] args) throws IOException {

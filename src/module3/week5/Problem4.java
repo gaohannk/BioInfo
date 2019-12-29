@@ -39,8 +39,6 @@ public class Problem4 {
 			int node2 = Integer.parseInt(edge.split(", ")[1]);
 			if (head % 2 == 0 && head - node2 == 1
 					|| head % 2 == 1 && head - node2 == -1) {
-				System.out.println("head: "+ head);
-				System.out.println("node2: "+ node2);
 
 				nodes.add(node);
 				nodes.add(0, node2); // Add to the front of this cycle
