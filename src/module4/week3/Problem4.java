@@ -17,7 +17,6 @@ public class Problem4 {
 	 * Note: Depending on how your code breaks ties, you may obtain a different solution than the one we provide.  As a result, the parsimony score at each step may vary
 	 **/
 	public static Node NearestNeighborInterchange(String input) {
-
 		return null;
 	}
 
