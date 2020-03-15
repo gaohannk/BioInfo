@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 import static common.Constant.nucle;
+import static module4.week3.TreeUtils.printEdgeInTree;
 
 public class Problem1 {
 
@@ -141,32 +142,6 @@ public class Problem1 {
 			}
 			node.symbolMap.put(c, min);
 		}
-	}
-
-	private static void printEdgeInTree(Node root) {
-		if (root.left == null || root.right == null) {
-			return;
-		}
-		System.out.println(getEdge(root.character, root.left.character));
-		System.out.println(getEdge(root.left.character, root.character));
-		System.out.println(getEdge(root.character, root.right.character));
-		System.out.println(getEdge(root.right.character, root.character));
-		printEdgeInTree(root.left);
-		printEdgeInTree(root.right);
-	}
-
-	private static String getEdge(char[] src, char[] dest) {
-		StringBuilder sb = new StringBuilder();
-		for (char c : src) {
-			sb.append(c);
-		}
-		sb.append("->");
-		for (char c : dest) {
-			sb.append(c);
-		}
-		sb.append(":");
-		sb.append(getHammingDistance(src, dest));
-		return sb.toString();
 	}
 
 	private static Node constructTree(String[] splits, int n) {

@@ -12,6 +12,7 @@ import static module2.common.Constant.MASSTABLE_REV;
 import static module4.week4.Problem1.graphOfSpectrum;
 
 public class Problem2 {
+    public static final String EMPTY_STRING = "";
 
     /**
      CODE CHALLENGE: Solve the Decoding an Ideal Spectrum Problem.
@@ -31,13 +32,13 @@ public class Problem2 {
     public static String DecodingIdealSpectrum(List<Integer> spectrum) {
         Map<Integer, List<Integer>> graph = graphOfSpectrum(spectrum);
         List<String> paths = new LinkedList<>();
-        getPeptide(graph, 0, "", paths);
+        getPeptide(graph, 0, EMPTY_STRING, paths);
         for (String peptide : paths) {
             if (compareSpectrum(idealSpecturm(peptide), spectrum)) {
                 return peptide;
             }
         }
-        return "";
+        return EMPTY_STRING;
     }
 
     private static boolean compareSpectrum(List<Integer> idealSpectrum, List<Integer> spectrum) {

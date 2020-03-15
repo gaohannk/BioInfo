@@ -1,17 +1,12 @@
 package module3.week5;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static module3.week5.Problem3.ColoredEdges;
-import static module3.week5.Problem4.GraphToGenome;
-import static module3.week5.Problem5.TwoBreakOnGenomeGraph;
 
 public class Problem8 {
     /**

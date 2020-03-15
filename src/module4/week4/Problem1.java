@@ -29,13 +29,8 @@ public class Problem1 {
 		for (int mass1 : iter) {
 			for (int mass2 : iter) {
 				if (mass1 < mass2 && MASSTABLE_REV.containsKey(mass2 - mass1)) {
-					if (map.containsKey(mass1)) {
-						map.get(mass1).add(mass2);
-					} else {
-						List<Integer> values = new LinkedList<>();
-						values.add(mass2);
-						map.put(mass1, values);
-					}
+					map.putIfAbsent(mass1, new LinkedList<>());
+					map.get(mass1).add(mass2);
 				}
 			}
 		}
