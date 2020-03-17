@@ -23,7 +23,6 @@ public class Problem3 {
 			mass += MASSTABLE.get(acid.charAt(i));
 			list.add(mass);
 		}
-		System.out.println(list);
 		int[] peptideVector = new int[list.get(list.size() - 1)];
 		for (int i : list) {
 			peptideVector[i - 1] = 1;
