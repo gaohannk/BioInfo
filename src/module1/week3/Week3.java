@@ -132,7 +132,7 @@ public class Week3 {
     public static double getProbFromProfile(double[][] profile, String pattern) {
         double prob = 1.0;
         for (int j = 0; j < pattern.length(); j++) {
-            prob *= profile[Constant.INDEX.get(String.valueOf(pattern.charAt(j)))][j];
+            prob *= profile[Constant.INDEX.get(pattern.charAt(j))][j];
         }
         return prob;
     }

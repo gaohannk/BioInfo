@@ -29,9 +29,9 @@ public class Problem5 {
     private static String SpectralAlignmentProblem(List<Integer> spectrum, String peptide, int k) {
 
         for (int i = 0; i < peptide.length(); i++) {
-            helper(spectrum, peptide, k-1, i, )
+            //helper(spectrum, peptide, k-1, i, )
         }
-
+        return  "";
     }
 
     public static void main(String[] args) throws IOException {

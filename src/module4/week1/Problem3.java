@@ -15,6 +15,23 @@ public class Problem3 {
 	 * Input: An integer n followed by a space-separated n x n distance matrix.
 	 * Output: A weighted adjacency list for the simple tree fitting this matrix.
 	 */
+	/**
+	 * AdditivePhylogeny(D)
+	 *     n ← number of rows in D
+	 *     if n = 2
+	 *         return the tree consisting of a single edge of length D1,2
+	 *     limbLength ← Limb(D, n)
+	 *     for j ← 1 to n - 1
+	 *         Dj,n ← Dj,n - limbLength
+	 *         Dn,j ← Dj,n
+	 *     (i, k) ← two leaves such that Di,k = Di,n + Dn,k
+	 *     x ← Di,n
+	 *     D ← D﻿ with row n and column n removed
+	 *     T ← AdditivePhylogeny(D)
+	 *     v ← the (potentially new) node in T at distance x from i on the path between i and k
+	 *     add leaf n back to T by creating a limb (v, n) of length limbLength
+	 *     return T
+	 */
 	public static Map<Integer, List<Pair>> AdditivePhylogeny(int[][] matrix, int n) throws Exception {
 		if (n == 2) {
 			Map<Integer, List<Pair>> graph = new HashMap<>();
@@ -25,13 +42,13 @@ public class Problem3 {
 			return graph;
 		}
 		int limbLen = LimbLength(matrix, n, n - 1);
-		for (int j = 1; j < n - 1; j++) {
-			matrix[j][n - 1] -= limbLen;
-			matrix[n - 1][j] = matrix[n - 1][j];
-		}
-		int[] iAndK = findIandK(matrix, n); // {i,k}
+//		for (int j = 1; j < n - 1; j++) {
+//			matrix[j][n - 1] -= limbLen;
+//			matrix[n - 1][j] = matrix[n - 1][j];
+//		}
+		int[] iAndK = findIandK(matrix, n, limbLen);
 		System.out.println("current n " + n+ " i:k  " + iAndK[0] + ":" + iAndK[1]);
-		int x = matrix[iAndK[0]][n - 1];
+		int x = matrix[iAndK[0]][n-1] - limbLen;
 		System.out.println("x:" + x);
 		Map<Integer, List<Pair>> graph = AdditivePhylogeny(matrix, n - 1);
 		System.out.println("recursive");
@@ -53,10 +70,10 @@ public class Problem3 {
 		}
 	}
 
-	public static int[] findIandK(int[][] matrix, int n) throws Exception {
+	public static int[] findIandK(int[][] matrix, int n, int limbLength) throws Exception {
 		for (int i = 0; i < n; i++) {
 			for (int k = 0; k < n; k++) {
-				if (matrix[i][k] == matrix[i][n - 1] + matrix[n - 1][k]) {
+				if (matrix[i][k] == matrix[i][n-1] + matrix[n-1][k] - 2 * limbLength) {
 					return new int[]{i, k};
 				}
 			}
@@ -119,7 +136,7 @@ public class Problem3 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String text = Files.readString(Path.of("./resource/module3/dataset_10329_11.txt"), Charset.forName("UTF-8"));
+		String text = Files.readString(Path.of("./resource/module4/dataset_10330_6.txt"), Charset.forName("UTF-8"));
 		String[] splits = text.split("\n");
 		int n = Integer.parseInt(splits[0]);
 		int[][] matrix = new int[n][n];
